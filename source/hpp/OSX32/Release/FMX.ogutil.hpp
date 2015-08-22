@@ -2,7 +2,7 @@
 // Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'FMX.ogutil.pas' rev: 29.00 (MacOS)
+// (DO NOT EDIT: machine generated header) 'FMX.ogutil.pas' rev: 30.00 (MacOS)
 
 #ifndef Fmx_OgutilHPP
 #define Fmx_OgutilHPP
@@ -53,6 +53,8 @@ typedef TIntegerArray *PIntegerArray;
 
 struct DECLSPEC_DRECORD TIntegerRec
 {
+	
+public:
 	union
 	{
 		struct 
@@ -80,6 +82,8 @@ struct DECLSPEC_DRECORD TCode
 public:
 	System::Word CheckValue;
 	System::Word Expiration;
+	
+public:
 	union
 	{
 		struct 
