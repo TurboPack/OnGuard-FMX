@@ -50,7 +50,7 @@ package OnGuardFMXDD;
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPack OnGuard FireMonkey Delphi Designtime package'}
-{$LIBSUFFIX '230'}
+{$LIBSUFFIX '240'}
 {$DESIGNONLY}
 {$IMPLICITBUILD OFF}
 
