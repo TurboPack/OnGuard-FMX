@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'OnGuardFMXDD.dpk' rev: 30.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'OnGuardFMXDD.dpk' rev: 31.00 (Windows)
 
 #ifndef OnguardfmxddHPP
 #define OnguardfmxddHPP
@@ -21,16 +21,16 @@
 #include <FMX.onguard6.hpp>
 #include <FMX.onguard7.hpp>
 #include <Winapi.Windows.hpp>	// (rtl)
+#include <Winapi.PsAPI.hpp>	// (rtl)
 #include <System.Character.hpp>	// (rtl)
 #include <System.Internal.ExcUtils.hpp>	// (rtl)
 #include <System.SysUtils.hpp>	// (rtl)
 #include <System.VarUtils.hpp>	// (rtl)
 #include <System.Variants.hpp>	// (rtl)
 #include <System.Math.hpp>	// (rtl)
-#include <System.AnsiStrings.hpp>	// (rtl)
-#include <System.Generics.Defaults.hpp>	// (rtl)
 #include <System.Rtti.hpp>	// (rtl)
 #include <System.TypInfo.hpp>	// (rtl)
+#include <System.Generics.Defaults.hpp>	// (rtl)
 #include <System.Classes.hpp>	// (rtl)
 #include <System.TimeSpan.hpp>	// (rtl)
 #include <System.DateUtils.hpp>	// (rtl)
@@ -51,6 +51,7 @@
 #include <Vcl.Dialogs.hpp>	// (vcl)
 #include <Vcl.ExtCtrls.hpp>	// (vcl)
 #include <Vcl.Themes.hpp>	// (vcl)
+#include <System.AnsiStrings.hpp>	// (rtl)
 #include <System.Win.ComObj.hpp>	// (rtl)
 #include <Winapi.FlatSB.hpp>	// (rtl)
 #include <Vcl.Forms.hpp>	// (vcl)
@@ -80,6 +81,7 @@
 #include <DesignEditors.hpp>	// (designide)
 #include <System.Messaging.hpp>	// (rtl)
 #include <System.Devices.hpp>	// (rtl)
+#include <FMX.Text.hpp>	// (fmx)
 #include <FMX.TextLayout.hpp>	// (fmx)
 #include <FMX.Utils.hpp>	// (fmx)
 #include <FMX.Graphics.hpp>	// (fmx)
@@ -91,9 +93,12 @@
 #include <FMX.Effects.hpp>	// (fmx)
 #include <FMX.MultiResBitmap.hpp>	// (fmx)
 #include <FMX.Ani.hpp>	// (fmx)
+#include <FMX.DialogService.Sync.hpp>	// (fmx)
 #include <FMX.Dialogs.hpp>	// (fmx)
+#include <FMX.DialogService.hpp>	// (fmx)
 #include <FMX.ImgList.hpp>	// (fmx)
 #include <FMX.Menus.hpp>	// (fmx)
+#include <Winapi.D2D1.hpp>	// (rtl)
 #include <FMX.Helpers.Win.hpp>	// (fmx)
 #include <Winapi.GDIPOBJ.hpp>	// (rtl)
 #include <FMX.Canvas.GDIP.hpp>	// (fmx)
@@ -114,8 +119,8 @@
 #include <FMX.Edit.Style.hpp>	// (fmx)
 #include <FMX.Edit.Win.hpp>	// (fmx)
 #include <FMX.Edit.hpp>	// (fmx)
+#include <FMX.DialogHelper.hpp>	// (fmx)
 #include <FMX.Dialogs.Win.hpp>	// (fmx)
-#include <Winapi.D2D1.hpp>	// (rtl)
 #include <FMX.Canvas.D2D.hpp>	// (fmx)
 #include <FMX.Canvas.GPU.Helpers.hpp>	// (fmx)
 #include <FMX.FontGlyphs.hpp>	// (fmx)
@@ -138,6 +143,7 @@
 #include <FMX.Controls.hpp>	// (fmx)
 #include <FMX.Header.hpp>	// (fmx)
 #include <FMX.Forms.hpp>	// (fmx)
+#include <FMX.Clipboard.Win.hpp>	// (fmx)
 #include <FMX.Platform.hpp>	// (fmx)
 #include <FMX.Types.hpp>	// (fmx)
 #include <FMX.Objects.hpp>	// (fmx)

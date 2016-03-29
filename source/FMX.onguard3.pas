@@ -104,6 +104,9 @@ implementation
 
 {$R *.fmx}
 
+uses
+  FMX.DialogService;
+
 const
   {name of section that stores application keys}
   OgKeySection = 'Keys';
@@ -241,10 +244,18 @@ var
   IniFile : TIniFile;
 {$ENDIF}
   I       : Integer;
+  lResult : TModalResult;
 begin
   I := GetListBoxItemIndex;                                          {!!.07}
   if (I > -1) then                                                   {!!.07}
-    if MessageDlg(SCDeleteQuery, TMsgDlgType.mtConfirmation, mbYesNo, 0) = mrYes then begin
+    TDialogService.MessageDialog(SCDeleteQuery, TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], TMsgDlgBtn.mbYes, 0,
+    procedure(const AResult: TModalResult)
+    begin
+      lResult := AResult;
+    end);
+
+    if lResult = mrYes then
+    begin
       {$IFDEF MSWINDOWS}
       IniFile := TIniFile.Create(KeyFileName);
       try

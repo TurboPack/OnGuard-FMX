@@ -148,7 +148,7 @@ implementation
 {$R *.fmx}
 
 uses
-  System.Character, FMX.ognetwrk;
+  System.Character, FMX.DialogService, FMX.ognetwrk;
 
 resourcestring
   SCInvalidStartDate = 'Invalid start date';
@@ -386,7 +386,7 @@ begin
 
     RegCodeEd.Text := BufferToHex(FCode, SizeOf(FCode));
   end else
-    MessageDlg(SCInvalidKeyOrModifier, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0);
+    TDialogService.MessageDialog(SCInvalidKeyOrModifier, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], TMsgDlgBtn.mbOK, 0, nil);
 end;
 
 procedure TCodeGenerateFrm.SerRandomBtnClick(Sender: TObject);
