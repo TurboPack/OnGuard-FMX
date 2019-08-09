@@ -26,7 +26,7 @@ package OnGuardFMXDR;
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPack OnGuard FireMonkey Delphi Runtime package'}
-{$LIBSUFFIX '240'}
+{$LIBSUFFIX '260'}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 
