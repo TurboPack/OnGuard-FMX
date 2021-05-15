@@ -215,14 +215,14 @@ begin
     end;
 
     {set status of string field}                                     {!!.11}
-    ModStringEd.Enabled := StringModifierCb.IsChecked;                 {!!.11}
+    ModStringEd.Enabled := StringModifierCb.IsChecked;               {!!.11}
                                                                      {!!.11}
-    if StringModifierCb.IsChecked then begin                           {!!.11}
+    if StringModifierCb.IsChecked then begin                         {!!.11}
       S := ModStringEd.Text;                                         {!!.11}
       {strip accented characters from the string}                    {!!.12}
-      for i := S.Length downto 0 do                                  {!!.12}
+      for i := S.Length - 1 downto 0 do                              {!!.12}
         if Ord(S.Chars[i]) > 127 then                                {!!.12}
-          S.Remove(i, 1);                                             {!!.12}
+          S.Remove(i, 1);                                            {!!.12}
       L := StringHashELF(S);                                         {!!.11}
     end;                                                             {!!.11}
 
