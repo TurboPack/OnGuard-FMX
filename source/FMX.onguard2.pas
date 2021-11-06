@@ -116,15 +116,15 @@ type
     FBusy        : Boolean;
     FCode        : TCode;
     FCodeType    : TCodeType;
-    FKey         : TKey;
+    FKey         : TLbKey;
     FKeyType     : TKeyType;
     FKeyFileName : string;
 
     procedure SetCodeType(Value : TCodeType);
 
   public
-    procedure SetKey(Value : TKey);                                  {!!.08}
-    procedure GetKey(var Value : TKey);                              {!!.08}
+    procedure SetKey(Value : TLbKey);                                  {!!.08}
+    procedure GetKey(var Value : TLbKey);                              {!!.08}
 
     property Code : TCode
       read FCode;
@@ -277,7 +277,7 @@ procedure TCodeGenerateFrm.GenerateBtnClick(Sender: TObject);
 var
   I        : Integer;
   Work     : TCode;
-  K        : TKey;
+  K        : TLbKey;
   Modifier : Integer;
   D1, D2   : TDateTime;
 begin
@@ -481,7 +481,7 @@ begin
   end;
 end;
 
-procedure TCodeGenerateFrm.SetKey(Value : TKey);
+procedure TCodeGenerateFrm.SetKey(Value : TLbKey);
 begin
   FKey := Value;
   BlockKeyEd.Text := BufferToHex(FKey, SizeOf(FKey));
@@ -495,7 +495,7 @@ begin
   OKBtn.Enabled := Length(RegCodeEd.Text) > 0;
 end;
 
-procedure TCodeGenerateFrm.GetKey(var Value : TKey);
+procedure TCodeGenerateFrm.GetKey(var Value : TLbKey);
 begin
   Value := FKey;
 end;

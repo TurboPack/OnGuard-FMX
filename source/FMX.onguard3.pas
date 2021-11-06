@@ -79,7 +79,7 @@ type
     function GetListBoxItemIndex : integer;                          {!!.07}
   private
     { Private declarations }
-    FKey         : TKey;
+    FKey         : TLbKey;
     FKeyType     : TKeyType;
 
     function GetKeyFileName : string;
@@ -87,8 +87,8 @@ type
 
   public
     { Public declarations }
-    procedure SetKey(Value : TKey);                                  {!!.08}
-    procedure GetKey(var Value : TKey);                              {!!.08}
+    procedure SetKey(Value : TLbKey);                                  {!!.08}
+    procedure GetKey(var Value : TLbKey);                              {!!.08}
 
     property KeyFileName : string
       read GetKeyFileName
@@ -342,12 +342,12 @@ begin
   BlockKeyEd.Text := BufferToHex(FKey, SizeOf(FKey));
 end;
 
-procedure TKeyMaintFrm.GetKey(var Value : TKey);                     {!!.08}
+procedure TKeyMaintFrm.GetKey(var Value : TLbKey);                     {!!.08}
 begin
   Value := FKey;
 end;
 
-procedure TKeyMaintFrm.SetKey(Value : TKey);                         {!!.08}
+procedure TKeyMaintFrm.SetKey(Value : TLbKey);                         {!!.08}
 begin
   FKey := Value;
 end;

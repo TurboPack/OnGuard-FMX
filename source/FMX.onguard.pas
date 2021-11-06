@@ -54,7 +54,7 @@ type
     procedure(Sender : TObject; var Code : TCode)
     of object;
   TGetKeyEvent =
-    procedure(Sender : TObject; var Key : TKey)
+    procedure(Sender : TObject; var Key : TLbKey)
     of object;
   TGetModifierEvent =
     procedure(Sender : TObject; var Value : Integer)
@@ -95,7 +95,7 @@ type
       dynamic;
     function DoOnGetCode : TCode;
       dynamic;
-    procedure DoOnGetKey(var Key : TKey);
+    procedure DoOnGetKey(var Key : TLbKey);
       dynamic;
     function DoOnGetModifier : Integer;
       dynamic;
@@ -163,7 +163,7 @@ type
     {property variables}
     FCode        : TCode;
     FCodeType    : TCodeType;
-    FKey         : TKey;
+    FKey         : TLbKey;
     FKeyFileName : string;
     FKeyType     : TKeyType;
     FShowHints   : Boolean;
@@ -178,8 +178,8 @@ type
     function Execute : Boolean;
     procedure GetCode(var Value : TCode);                            {!!.08}
     procedure SetCode(Value : TCode);                                {!!.08}
-    procedure GetKey(var Value : TKey);                              {!!.08}
-    procedure SetKey(Value : TKey);                                  {!!.08}
+    procedure GetKey(var Value : TLbKey);                              {!!.08}
+    procedure SetKey(Value : TLbKey);                                  {!!.08}
 
     property KeyType : TKeyType
       read FKeyType
@@ -213,7 +213,7 @@ type
   protected {private}
     {property variables}
     FKeyFileName : string;
-    FKey         : TKey;
+    FKey         : TLbKey;
     FKeyType     : TKeyType;
     FShowHints   : Boolean;
 
@@ -240,8 +240,8 @@ type
       {-returns a modifier based on S}
     function GenerateUniqueModifier : Integer;
       {-returns a unique/random modifier}
-    procedure SetKey(Value : TKey);                                  {!!.08}
-    procedure GetKey(var Value : TKey);                              {!!.08}
+    procedure SetKey(Value : TLbKey);                                  {!!.08}
+    procedure GetKey(var Value : TLbKey);                              {!!.08}
 
   published
 
@@ -491,9 +491,9 @@ begin
   FCode := Result;                                                     {!!.02}
 end;
 
-procedure TOgCodeBase.DoOnGetKey(var Key : TKey);
+procedure TOgCodeBase.DoOnGetKey(var Key : TLbKey);
 begin
-  FillChar(Key, SizeOf(TKey), 0);
+  FillChar(Key, SizeOf(TLbKey), 0);
   if Assigned(FOnGetKey) then
     FOnGetKey(Self, Key)
   else
@@ -590,7 +590,7 @@ end;
 function TOgDateCode.CheckCode(Report : Boolean) : TCodeStatus;
 var
   Code     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   Modifier : Integer;
 begin
   Result := ogValidCode;
@@ -613,7 +613,7 @@ end;
 function TOgDateCode.GetValue : TDateTime;
 var
   Code     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   Modifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -631,7 +631,7 @@ end;
 function TOgDaysCode.CheckCode(Report : Boolean) : TCodeStatus;
 var
   Code     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   Modifier : Integer;
 begin
   Result := ogValidCode;
@@ -665,7 +665,7 @@ procedure TOgDaysCode.Decrease;
 var
   Code     : TCode;
   Work     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   Modifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -693,7 +693,7 @@ end;
 function TOgDaysCode.GetValue : Integer;
 var
   Code     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   Modifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -771,12 +771,12 @@ begin
   FCode := Value;
 end;
 
-procedure TOgMakeCodes.GetKey(var Value : TKey);                     {!!.08}
+procedure TOgMakeCodes.GetKey(var Value : TLbKey);                     {!!.08}
 begin
   Value := FKey;
 end;
 
-procedure TOgMakeCodes.SetKey(Value : TKey);                         {!!.08}
+procedure TOgMakeCodes.SetKey(Value : TLbKey);                         {!!.08}
 begin
   FKey := Value;
 end;
@@ -863,12 +863,12 @@ procedure TOgMakeKeys.SetAbout(const Value : string);                {!!.08}
 begin
 end;
 
-procedure TOgMakeKeys.GetKey(var Value : TKey);                      {!!.08}
+procedure TOgMakeKeys.GetKey(var Value : TLbKey);                      {!!.08}
 begin
   Value := FKey;
 end;
 
-procedure TOgMakeKeys.SetKey(Value : TKey);                          {!!.08}
+procedure TOgMakeKeys.SetKey(Value : TLbKey);                          {!!.08}
 begin
   FKey := Value;
 end;
@@ -880,7 +880,7 @@ end;
 function TOgRegistrationCode.CheckCode(Report : Boolean) : TCodeStatus;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
   {RegStr   : string;}                                                 {!!.02}
 begin
@@ -925,7 +925,7 @@ end;
 function TOgSerialNumberCode.CheckCode(Report : Boolean) : TCodeStatus;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   Result := ogValidCode;
@@ -947,7 +947,7 @@ end;
 function TOgSerialNumberCode.GetValue : Integer;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -965,7 +965,7 @@ end;
 function TOgSpecialCode.CheckCode(Report : Boolean) : TCodeStatus;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   Result := ogValidCode;
@@ -987,7 +987,7 @@ end;
 function TOgSpecialCode.GetValue : Integer;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -1005,7 +1005,7 @@ end;
 function TOgUsageCode.CheckCode(Report : Boolean) : TCodeStatus;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   Result := ogValidCode;
@@ -1039,7 +1039,7 @@ procedure TOgUsageCode.Decrease;
 var
   ACode     : TCode;
   Work     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -1065,7 +1065,7 @@ end;
 function TOgUsageCode.GetValue : Integer;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   DoOnGetKey(Key);

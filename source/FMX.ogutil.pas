@@ -119,7 +119,7 @@ type
   {order must match tab order for code generation notebook}
 
 type
-  TKey     = array [0..15] of Byte;
+  TLbKey     = array [0..15] of Byte;
   TKeyType = (ktRandom, ktMessageDigest, ktMessageDigestCS);
   {order must match order for key generation combobox string list}
 
@@ -158,55 +158,55 @@ type
   EOnGuardClockIssueException = class(EOnGuardException);              {!!.15}
 
 
-function GetCodeType(const Key : TKey; const Code : TCode) : TCodeType;
+function GetCodeType(const Key : TLbKey; const Code : TCode) : TCodeType;
   {-return the type of code}
-function GetExpirationDate(const Key : TKey; const Code : TCode) : TDateTime;
+function GetExpirationDate(const Key : TLbKey; const Code : TCode) : TDateTime;
   {-return the date this code expires}
 
-procedure InitDateCode(const Key : TKey; StartDate, EndDate : TDateTime; var Code : TCode);
-function IsDateCodeValid(const Key : TKey; const Code : TCode) : Boolean;
-function GetDateCodeValue(const Key : TKey; const Code : TCode) : TDateTime;
-function IsDateCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
-procedure InitDateCodeEx(const Key : TKey; StartDate, EndDate, Expires : TDateTime; var Code : TCode);
-function GetDateCodeStart(const Key : TKey; const Code : TCode) : TDateTime;
-function GetDateCodeEnd(const Key : TKey; const Code : TCode) : TDateTime;
+procedure InitDateCode(const Key : TLbKey; StartDate, EndDate : TDateTime; var Code : TCode);
+function IsDateCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
+function GetDateCodeValue(const Key : TLbKey; const Code : TCode) : TDateTime;
+function IsDateCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
+procedure InitDateCodeEx(const Key : TLbKey; StartDate, EndDate, Expires : TDateTime; var Code : TCode);
+function GetDateCodeStart(const Key : TLbKey; const Code : TCode) : TDateTime;
+function GetDateCodeEnd(const Key : TLbKey; const Code : TCode) : TDateTime;
 
-procedure InitDaysCode(const Key : TKey; Days : Word; Expires : TDateTime; var Code : TCode);
-function IsDaysCodeValid(const Key : TKey; const Code : TCode) : Boolean;
-procedure DecDaysCode(const Key : TKey; var Code : TCode);
-function GetDaysCodeValue(const Key : TKey; const Code : TCode) : Integer;
-function IsDaysCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
+procedure InitDaysCode(const Key : TLbKey; Days : Word; Expires : TDateTime; var Code : TCode);
+function IsDaysCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
+procedure DecDaysCode(const Key : TLbKey; var Code : TCode);
+function GetDaysCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
+function IsDaysCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
 
-procedure InitRegCode(const Key : TKey; const RegStr : string; Expires : TDateTime; var Code : TCode);
-function IsRegCodeValid(const Key : TKey; const Code : TCode) : Boolean;
-function IsRegCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
-function IsRegCodeRegisteredTo(const Key : TKey; const Code : TCode; const RegStr: string) : Boolean;
+procedure InitRegCode(const Key : TLbKey; const RegStr : string; Expires : TDateTime; var Code : TCode);
+function IsRegCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
+function IsRegCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
+function IsRegCodeRegisteredTo(const Key : TLbKey; const Code : TCode; const RegStr: string) : Boolean;
 
-procedure InitSerialNumberCode(const Key : TKey;  Serial : Integer; Expires : TDateTime; var Code : TCode);
-function IsSerialNumberCodeValid(const Key : TKey; const Code : TCode) : Boolean;
-function GetSerialNumberCodeValue(const Key : TKey; const Code : TCode) : Integer;
-function IsSerialNumberCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
-function IsSerialNumberCodeValidFor(const Key : TKey; const Code : TCode; const Serial: Integer) : Boolean;
+procedure InitSerialNumberCode(const Key : TLbKey;  Serial : Integer; Expires : TDateTime; var Code : TCode);
+function IsSerialNumberCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
+function GetSerialNumberCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
+function IsSerialNumberCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
+function IsSerialNumberCodeValidFor(const Key : TLbKey; const Code : TCode; const Serial: Integer) : Boolean;
 
-procedure InitSpecialCode(const Key : TKey; Value : Integer; Expires : TDateTime; var Code : TCode);
-function IsSpecialCodeValid(const Key : TKey; const Code : TCode) : Boolean;
-function GetSpecialCodeValue(const Key : TKey; const Code : TCode) : Integer;
-function IsSpecialCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
-function IsSpecialCodeValidFor(const Key : TKey; const Code : TCode; const Value: Integer) : Boolean;
+procedure InitSpecialCode(const Key : TLbKey; Value : Integer; Expires : TDateTime; var Code : TCode);
+function IsSpecialCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
+function GetSpecialCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
+function IsSpecialCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
+function IsSpecialCodeValidFor(const Key : TLbKey; const Code : TCode; const Value: Integer) : Boolean;
 
-procedure InitUsageCode(const Key : TKey; Count : Word; Expires : TDateTime; var Code : TCode);
-function IsUsageCodeValid(const Key : TKey; const Code : TCode) : Boolean;
-procedure DecUsageCode(const Key : TKey; var Code : TCode);
-function GetUsageCodeValue(const Key : TKey; const Code : TCode) : Integer;
-function IsUsageCodeExpired(const Key : TKey; const Code: TCode) : Boolean;
+procedure InitUsageCode(const Key : TLbKey; Count : Word; Expires : TDateTime; var Code : TCode);
+function IsUsageCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
+procedure DecUsageCode(const Key : TLbKey; var Code : TCode);
+function GetUsageCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
+function IsUsageCodeExpired(const Key : TLbKey; const Code: TCode) : Boolean;
 {$IFDEF OgUsageUnlimited}
-procedure InitUsageCodeUnlimited(const Key : TKey; var Code : TCode);
+procedure InitUsageCodeUnlimited(const Key : TLbKey; var Code : TCode);
 {$ENDIF}
 
 {generate key routines}
 procedure GenerateRandomKeyPrim(var Key; KeySize : Cardinal);
 procedure GenerateTMDKeyPrim(var Key; KeySize : Cardinal; const Str : string);
-procedure GenerateMD5KeyPrim(var Key: TKey; const Str : string);
+procedure GenerateMD5KeyPrim(var Key: TLbKey; const Str : string);
 
 {modifier routines}
 function CreateMachineID(MachineInfo : TEsMachineInfoSet; Ansi: Boolean = True) : Integer;   {!!.05}
@@ -634,7 +634,7 @@ type
     KeyIndex    : Integer;
     case Byte of
       0: (KeyInts : array [0..3] of Integer);
-      1: (Key     : TKey);
+      1: (Key     : TLbKey);
   end;
   TBlock2048 = array [0..255] of Byte;
 
@@ -1329,7 +1329,7 @@ begin
   HashTMD(Key, KeySize, pBytes[0], Length(pBytes));                    {!!.06}
 end;
 
-procedure GenerateMD5KeyPrim(var Key: TKey; const Str: string);
+procedure GenerateMD5KeyPrim(var Key: TLbKey; const Str: string);
 var
   D : TMD5Digest;
   I  : Integer;
@@ -1344,7 +1344,7 @@ begin
 
   pBytes := TEncoding.ANSI.GetBytes(S2);
   D := HashMD5(pBytes[0], Length(pBytes));                             {!!.06}
-  Key := TKey(D);
+  Key := TLbKey(D);
 end;
 {$ENDREGION}
 
@@ -1405,7 +1405,7 @@ end;
 
 {$REGION 'general'}
 {*** general routines ***}
-function GetCodeType(const Key : TKey; const Code : TCode) : TCodeType;
+function GetCodeType(const Key : TLbKey; const Code : TCode) : TCodeType;
 var
   Work : TCode;
 begin
@@ -1440,7 +1440,7 @@ begin
     Result := Trunc(D) - BaseDate;
 end;
 
-function GetExpirationDate(const Key : TKey; const Code : TCode) : TDateTime;
+function GetExpirationDate(const Key : TLbKey; const Code : TCode) : TDateTime;
 var
   Work : TCode;
 begin
@@ -1462,7 +1462,7 @@ end;
 {$REGION '*** date code ***'}
 {*** date code ***}
 
-procedure InitDateCode(const Key : TKey;
+procedure InitDateCode(const Key : TLbKey;
           StartDate, EndDate : TDateTime; var Code : TCode);
 begin
   if StartDate <= BaseDate then EOnGuardBadDateException.Create('Start Date is less than or equal to BaseDate.');
@@ -1476,7 +1476,7 @@ begin
 end;
 
 {!!.15}
-procedure InitDateCodeEx(const Key : TKey; StartDate, EndDate, Expires : TDateTime; var Code : TCode);
+procedure InitDateCodeEx(const Key : TLbKey; StartDate, EndDate, Expires : TDateTime; var Code : TCode);
 begin
   if StartDate <= BaseDate then EOnGuardBadDateException.Create('Start Date is less than or equal to BaseDate.');
   if StartDate > EncodeDate(2175,6,6) then EOnGuardBadDateException.Create('Start Date is greater than 2175-Jun-06 which is not supported.');
@@ -1490,7 +1490,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function IsDateCodeValid(const Key : TKey; const Code : TCode) : Boolean;
+function IsDateCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1504,7 +1504,7 @@ begin
   {$ENDIF}
 end;
 
-function GetDateCodeValue(const Key : TKey; const Code : TCode) : TDateTime;
+function GetDateCodeValue(const Key : TLbKey; const Code : TCode) : TDateTime;
 var
   Work : TCode;
 begin
@@ -1518,12 +1518,12 @@ begin
     Result := 0;
 end;
 
-function IsDateCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
+function IsDateCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
 begin
   Result := (GetDateCodeValue(Key, Code) < Date);
 end;
 
-function GetDateCodeStart(const Key : TKey; const Code : TCode) : TDateTime;
+function GetDateCodeStart(const Key : TLbKey; const Code : TCode) : TDateTime;
 var
   Work : TCode;
 begin
@@ -1536,7 +1536,7 @@ begin
     Result := 0;
 end;
 
-function GetDateCodeEnd(const Key : TKey; const Code : TCode) : TDateTime;
+function GetDateCodeEnd(const Key : TLbKey; const Code : TCode) : TDateTime;
 var
   Work : TCode;
 begin
@@ -1554,7 +1554,7 @@ end;
 {$REGION '*** days code ***'}
 {*** days code ***}
 
-procedure InitDaysCode(const Key : TKey; Days : Word; Expires : TDateTime;
+procedure InitDaysCode(const Key : TLbKey; Days : Word; Expires : TDateTime;
                        var Code : TCode);
 begin
   Code.CheckValue := DaysCheckCode;
@@ -1564,7 +1564,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function IsDaysCodeValid(const Key : TKey; const Code : TCode) : Boolean;
+function IsDaysCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1578,7 +1578,7 @@ begin
   {$ENDIF}
 end;
 
-procedure DecDaysCode(const Key : TKey; var Code : TCode);
+procedure DecDaysCode(const Key : TLbKey; var Code : TCode);
 var
   X : Integer;
 begin
@@ -1592,7 +1592,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function GetDaysCodeValue(const Key : TKey; const Code : TCode) : Integer;
+function GetDaysCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
 var
   Work : TCode;
 begin
@@ -1609,7 +1609,7 @@ begin
   {$ENDIF}
 end;
 
-function IsDaysCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
+function IsDaysCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1622,7 +1622,7 @@ end;
 {$REGION '*** registration code ***'}
 {*** registration code ***}
 
-procedure InitRegCode(const Key : TKey; const RegStr : string; Expires : TDateTime; var Code : TCode);
+procedure InitRegCode(const Key : TLbKey; const RegStr : string; Expires : TDateTime; var Code : TCode);
 var
   S :string;                                                          {!!.06}
   I : Integer;                                                         {!!.06}
@@ -1638,7 +1638,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function IsRegCodeValid(const Key : TKey; const Code : TCode) : Boolean;
+function IsRegCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1647,7 +1647,7 @@ begin
   Result := (Work.CheckValue = RegCheckCode);
 end;
 
-function IsRegCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
+function IsRegCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1656,7 +1656,7 @@ begin
   Result := ExpandDate(Work.Expiration) < Date;
 end;
 
-function IsRegCodeRegisteredTo(const Key : TKey; const Code : TCode; const RegStr: string) : Boolean;
+function IsRegCodeRegisteredTo(const Key : TLbKey; const Code : TCode; const RegStr: string) : Boolean;
 var
   Work : TCode;
   S : string;
@@ -1678,7 +1678,7 @@ end;
 {$REGION '*** serial number code ***'}
 {*** serial number code ***}
 
-procedure InitSerialNumberCode(const Key : TKey; Serial : Integer; Expires : TDateTime; var Code : TCode);
+procedure InitSerialNumberCode(const Key : TLbKey; Serial : Integer; Expires : TDateTime; var Code : TCode);
 begin
   Code.CheckValue := SerialCheckCode;
   Code.Expiration := ShrinkDate(Expires);
@@ -1686,7 +1686,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function IsSerialNumberCodeValid(const Key : TKey; const Code : TCode) : Boolean;
+function IsSerialNumberCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1695,7 +1695,7 @@ begin
   Result := (Work.CheckValue = SerialCheckCode);
 end;
 
-function GetSerialNumberCodeValue(const Key : TKey; const Code : TCode) : Integer;
+function GetSerialNumberCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
 var
   Work : TCode;
 begin
@@ -1707,7 +1707,7 @@ begin
     Result := 0;
 end;
 
-function IsSerialNumberCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
+function IsSerialNumberCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1716,7 +1716,7 @@ begin
   Result := ExpandDate(Work.Expiration) < Date;
 end;
 
-function IsSerialNumberCodeValidFor(const Key : TKey; const Code : TCode; const Serial: Integer) : Boolean;
+function IsSerialNumberCodeValidFor(const Key : TLbKey; const Code : TCode; const Serial: Integer) : Boolean;
 var
   Work : TCode;
 begin
@@ -1730,7 +1730,7 @@ end;
 {$REGION '*** special code ***'}
 {*** special code ***}
 
-procedure InitSpecialCode(const Key : TKey; Value : Integer; Expires : TDateTime; var Code : TCode);
+procedure InitSpecialCode(const Key : TLbKey; Value : Integer; Expires : TDateTime; var Code : TCode);
 begin
   Code.CheckValue := SpecialCheckCode;
   Code.Expiration := ShrinkDate(Expires);
@@ -1738,7 +1738,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function IsSpecialCodeValid(const Key : TKey; const Code : TCode) : Boolean;
+function IsSpecialCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1747,7 +1747,7 @@ begin
   Result := (Work.CheckValue = SpecialCheckCode);
 end;
 
-function GetSpecialCodeValue(const Key : TKey; const Code : TCode) : Integer;
+function GetSpecialCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
 var
   Work : TCode;
 begin
@@ -1759,7 +1759,7 @@ begin
     Result := 0;
 end;
 
-function IsSpecialCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
+function IsSpecialCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1768,7 +1768,7 @@ begin
   Result := ExpandDate(Work.Expiration) < Date;
 end;
 
-function IsSpecialCodeValidFor(const Key : TKey; const Code : TCode; const Value: Integer) : Boolean;
+function IsSpecialCodeValidFor(const Key : TLbKey; const Code : TCode; const Value: Integer) : Boolean;
 var
   Work : TCode;
 begin
@@ -1782,7 +1782,7 @@ end;
 {$REGION '*** usage code ***'}
 {*** usage code ***}
 
-procedure InitUsageCode(const Key : TKey; Count : Word; Expires : TDateTime; var Code : TCode);
+procedure InitUsageCode(const Key : TLbKey; Count : Word; Expires : TDateTime; var Code : TCode);
 begin
   Code.CheckValue := UsageCheckCode;
   Code.Expiration := ShrinkDate(Expires);
@@ -1791,7 +1791,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function IsUsageCodeValid(const Key : TKey; const Code : TCode) : Boolean;
+function IsUsageCodeValid(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1805,7 +1805,7 @@ begin
   {$ENDIF}
 end;
 
-procedure DecUsageCode(const Key : TKey; var Code : TCode);
+procedure DecUsageCode(const Key : TLbKey; var Code : TCode);
 var                                                                    {!!.02}
   D : Word;                                                            {!!.02}
 begin
@@ -1822,7 +1822,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function GetUsageCodeValue(const Key : TKey; const Code : TCode) : Integer;
+function GetUsageCodeValue(const Key : TLbKey; const Code : TCode) : Integer;
 var
   Work : TCode;
 begin
@@ -1839,7 +1839,7 @@ begin
   {$ENDIF}
 end;
 
-function IsUsageCodeExpired(const Key : TKey; const Code : TCode) : Boolean;
+function IsUsageCodeExpired(const Key : TLbKey; const Code : TCode) : Boolean;
 var
   Work : TCode;
 begin
@@ -1853,7 +1853,7 @@ begin
 end;
 
 {$IFDEF OgUsageUnlimited}
-procedure InitUsageCodeUnlimited(const Key : TKey; var Code : TCode);
+procedure InitUsageCodeUnlimited(const Key : TLbKey; var Code : TCode);
 begin
   Code.CheckValue := UsageCheckCode;
   Code.Expiration := 65535;

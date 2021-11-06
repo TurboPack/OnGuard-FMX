@@ -58,7 +58,7 @@ type
     procedure GenerateKeySbClick(Sender: TObject);
   private
     { Private declarations }
-    FKey         : TKey;
+    FKey         : TLbKey;
     FKeyType     : TKeyType;
 
     function GetShowHints : Boolean;
@@ -66,8 +66,8 @@ type
 
   public
     { Public declarations }
-    procedure SetKey(Value : TKey);                                  {!!.08}
-    procedure GetKey(var Value : TKey);                              {!!.08}
+    procedure SetKey(Value : TLbKey);                                  {!!.08}
+    procedure GetKey(var Value : TLbKey);                              {!!.08}
 
     property KeyType : TKeyType
       read FKeyType
@@ -95,7 +95,7 @@ end;
 
 procedure TEditProductFrm.InfoChanged(Sender: TObject);
 var
-  Work : TKey;
+  Work : TLbKey;
 begin
   OKBtn.Enabled := (Length(ProductEd.Text) > 0) and
     (HexToBuffer(KeyEd.Text, Work, SizeOf(Work)));
@@ -139,12 +139,12 @@ procedure TEditProductFrm.SetShowHints(Value : Boolean);
 begin
 end;
 
-procedure TEditProductFrm.GetKey(var Value : TKey);
+procedure TEditProductFrm.GetKey(var Value : TLbKey);
 begin
   Value := FKey;
 end;
 
-procedure TEditProductFrm.SetKey(Value : TKey);
+procedure TEditProductFrm.SetKey(Value : TLbKey);
 begin
   FKey := Value;
 end;

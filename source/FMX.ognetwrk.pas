@@ -47,7 +47,7 @@ uses
 type
   TNetAccess = packed record
     Fh         : Integer;
-    Key        : TKey;
+    Key        : TLbKey;
     CheckValue : Word;
     Index      : Word;
   end;
@@ -132,23 +132,23 @@ type
 {network user access/count routines}
 function CheckNetAccessFile(const NetAccess : TNetAccess) : Boolean;
   {-verifies that the NetAccess record provides authorized use}
-function CreateNetAccessFile(const FileName : string; const Key : TKey; Count : Word) : Boolean;
+function CreateNetAccessFile(const FileName : string; const Key : TLbKey; Count : Word) : Boolean;
   {-creates the net access file as FileName using Key for encryption}
-function CreateNetAccessFileEx(const FileName : string; const Key : TKey;
+function CreateNetAccessFileEx(const FileName : string; const Key : TLbKey;
          const Code : TCode) : Boolean;
   {-creates the net access file getting the user count from a previously encoded Code block}
-function DecodeNAFCountCode(const Key : TKey; const Code : TCode) : Integer;
+function DecodeNAFCountCode(const Key : TLbKey; const Code : TCode) : Integer;
   {-returns the user count from a previously encoded Code block}
-procedure EncodeNAFCountCode(const Key : TKey; Count : Cardinal;  var Code : TCode);
+procedure EncodeNAFCountCode(const Key : TLbKey; Count : Cardinal;  var Code : TCode);
   {-creates an encoded Code block for Count users}
-function GetNetAccessFileInfo(const FileName : string; const Key : TKey;
+function GetNetAccessFileInfo(const FileName : string; const Key : TLbKey;
          var NetAccessInfo : TNetAccessInfo) : Boolean;
   {-fills a TNetAccessInfo structure. returns Fasle on error}
 function IsAppOnNetwork(const ExePath : string) : Boolean;
   {-returns True if the application is running on a netword drive}
-function LockNetAccessFile(const FileName : string; const Key : TKey; var NetAccess : TNetAccess) : Boolean;
+function LockNetAccessFile(const FileName : string; const Key : TLbKey; var NetAccess : TNetAccess) : Boolean;
   {-locks a record in FileName and fills NetAccess. returns False on error}
-function ResetNetAccessFile(const FileName : string; const Key : TKey) : Boolean;
+function ResetNetAccessFile(const FileName : string; const Key : TLbKey) : Boolean;
   {-rewrites the net access file contents}
 function UnlockNetAccessFile(var NetAccess : TNetAccess) : Boolean;
   {-unlocks the net access record defined by NetAccess. returns False on error}
@@ -183,7 +183,7 @@ end;
 
 function TOgNetCode.CheckCode(Report : Boolean) : TCodeStatus;
 var
-  Key      : TKey;
+  Key      : TLbKey;
 begin
   Result := ogValidCode;
 
@@ -220,7 +220,7 @@ end;
 function TOgNetCode.CreateAccessFile : Boolean;
 var
   ACode     : TCode;
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -249,7 +249,7 @@ end;
 
 function TOgNetCode.GetActiveUsers : Integer;
 var
-  Key           : TKey;
+  Key           : TLbKey;
   AModifier      : Integer;
   NetAccessInfo : TNetAccessInfo;
 begin
@@ -264,7 +264,7 @@ end;
 
 function TOgNetCode.GetInvalidUsers : Integer;
 var
-  Key           : TKey;
+  Key           : TLbKey;
   AModifier      : Integer;
   {NetAccessInfo : TNetAccessInfo;}                                  {!!.08}
 begin
@@ -279,7 +279,7 @@ end;
 
 function TOgNetCode.GetMaxUsers : Integer;
 var
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -298,7 +298,7 @@ end;
 
 procedure TOgNetCode.Loaded;
 var
-  Key      : TKey;
+  Key      : TLbKey;
   ACode     : TCode;
   AModifier : Integer;
 begin
@@ -328,7 +328,7 @@ end;
 
 function TOgNetCode.ResetAccessFile : Boolean;
 var
-  Key      : TKey;
+  Key      : TLbKey;
   AModifier : Integer;
 begin
   DoOnGetKey(Key);
@@ -354,7 +354,7 @@ begin
   end;
 end;
 
-function CreateNetAccessFile(const FileName : string; const Key : TKey; Count : Word) : Boolean;
+function CreateNetAccessFile(const FileName : string; const Key : TLbKey; Count : Word) : Boolean;
 var
   Fh   : Integer;
   I    : Integer;
@@ -380,7 +380,7 @@ begin
   end;
 end;
 
-function CreateNetAccessFileEx(const FileName : string; const Key : TKey; const Code : TCode) : Boolean;
+function CreateNetAccessFileEx(const FileName : string; const Key : TLbKey; const Code : TCode) : Boolean;
 var
   L : Integer;
 begin
@@ -391,7 +391,7 @@ begin
     Result := False;
 end;
 
-function DecodeNAFCountCode(const Key : TKey; const Code : TCode) : Integer;
+function DecodeNAFCountCode(const Key : TLbKey; const Code : TCode) : Integer;
 var
   Work : TCode;
 begin
@@ -403,7 +403,7 @@ begin
     Result := -1;
 end;
 
-procedure EncodeNAFCountCode(const Key : TKey; Count : Cardinal; var Code : TCode);
+procedure EncodeNAFCountCode(const Key : TLbKey; Count : Cardinal; var Code : TCode);
 begin
   Code.CheckValue := NetCheckCode;
   Code.Expiration := 0; {not used}
@@ -411,7 +411,7 @@ begin
   MixBlock(T128bit(Key), Code, True);
 end;
 
-function GetNetAccessFileInfo(const FileName : string; const Key : TKey;
+function GetNetAccessFileInfo(const FileName : string; const Key : TLbKey;
          var NetAccessInfo : TNetAccessInfo) : Boolean;
 var
   Fh   : Integer;
@@ -467,7 +467,7 @@ begin
 end;
 {$ENDIF}
 
-function LockNetAccessFile(const FileName : string; const Key : TKey;
+function LockNetAccessFile(const FileName : string; const Key : TLbKey;
                            var NetAccess : TNetAccess) : Boolean;
 var
   Fh    : Integer;
@@ -513,7 +513,7 @@ begin
   end;
 end;
 
-function ResetNetAccessFile(const FileName : string; const Key : TKey) : Boolean;
+function ResetNetAccessFile(const FileName : string; const Key : TLbKey) : Boolean;
 var
   Fh    : Integer;
   Count : Cardinal;

@@ -40,7 +40,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.Objects, FMX.ExtCtrls,
   FMX.Memo, FMX.Edit, FMX.Platform, Fmx.StdCtrls, FMX.Header, FMX.Graphics,
   FMX.ListBox, FMX.Controls.Presentation, FMX.Layouts, FMX.ogutil, FMX.onguard,
-  FMX.ScrollBox;
+  FMX.ScrollBox, FMX.Memo.Types;
 
 type
   TKeyGenerateFrm = class(TForm)
@@ -68,15 +68,15 @@ type
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    FKey     : TKey;
+    FKey     : TLbKey;
     FKeyType : TKeyType;
 
     procedure SetKeyType(Value : TKeyType);
 
   public
     { Public declarations }                                          
-    procedure SetKey(Value : TKey);                                  {!!.08}
-    procedure GetKey(var Value : TKey);                              {!!.08}
+    procedure SetKey(Value : TLbKey);                                  {!!.08}
+    procedure GetKey(var Value : TLbKey);                              {!!.08}
 
     property KeyType : TKeyType
       read FKeyType
@@ -197,12 +197,12 @@ begin
   end;
 end;
 
-procedure TKeyGenerateFrm.GetKey(var Value : TKey);
+procedure TKeyGenerateFrm.GetKey(var Value : TLbKey);
 begin
   Value := FKey;
 end;
 
-procedure TKeyGenerateFrm.SetKey(Value : TKey);
+procedure TKeyGenerateFrm.SetKey(Value : TLbKey);
 begin
   FKey := Value;
 end;
