@@ -406,7 +406,7 @@ begin
     Sum := Sum + Bytes[I];
 end;
 
-{$IFDEF Win32}
+{$IFDEF MSWINDOWS}
 function FileCRC32(const FileName : string) : DWord;                 {!!.07}
 var
   Fh      : THandle;
